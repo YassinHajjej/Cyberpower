@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Lesson
+from django.views.generic import ListView, DetailView
+from .models import Lesson, Comments
+from .forms import CommentForm
 
 
 # Create your views here.
@@ -13,13 +15,16 @@ def about(request):
 def lessons_index(request):
     lessons = Lesson.objects.all()
     return render(request, 'lessons/index.html', {
-        'lessons': lessons
+        'lessons': lessons,
     })
 
 def lesson_detail(request, lesson_id):
     lesson = Lesson.objects.get(id=lesson_id)
+    comments = lesson.comments.all()
+    print(comments)
     return render(request, 'lessons/detail.html', {
-        'lesson': lesson 
+        'lesson': lesson,
+        'comments': comments,
     })
 
 class LessonCreate(CreateView):
@@ -33,3 +38,15 @@ class LessonUpdate(UpdateView):
 class LessonDelete(DeleteView):
     model = Lesson
     success_url = '/lessons/'
+
+
+def add_comment(request, lesson_id):
+    comment = None
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.lesson_id = lesson_id
+            comment.save()
+        print(comment)
+    return redirect('lesson_detail', lesson_id=lesson_id)

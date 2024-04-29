@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if object %}
+    <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+  {% else %}
+    <h1>Add Toy</h1>
+  {% endif %}
+  
+  <form action="{% url 'comment_create' lesson.id %}" method="post">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
