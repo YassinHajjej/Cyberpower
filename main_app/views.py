@@ -1,12 +1,29 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.models import User
 from .models import Lesson, Comments
 from .forms import CommentForm
 from datetime import date
 
 
 # Create your views here.
+def loginPage(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(username=username)
+        except: 
+            messages.error(request, ' User not Found')
+
+    context = {}
+    return render(request, 'login_register.html', context)
+
+
+
 def home(request):
     return render(request, 'home.html')
 
@@ -54,5 +71,7 @@ def add_comment(request, lesson_id):
     return redirect('lesson_detail', lesson_id=lesson_id)
    
 
-   
+class DeleteComment(DeleteView):
+    model = Comments
+    success_url = '/lessons/'
     
