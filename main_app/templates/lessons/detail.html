@@ -1,6 +1,4 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <h1>Lesson Details</h1>
 
@@ -18,23 +16,28 @@
         <a href="{% url 'lesson_delete' lesson.id %}">Delete</a>
       </div>
     </div>
-  </div>
-  
-  <div>
+
     <h2>Comments</h2>
-    {% for comment in lesson.comments.all %}
-      <div>
-        <p>{{ comment.content }}</p>
-        <p>Date Posted: {{ comment.date }}</p>
-      </div>
-    {% endfor %}
+    {% if comments %}
+    <ul class="collection">
+      {% for comment in comments %}
+      <li class="collection-item">
+        <div>{{ comment.content }}</div>
+        <div>Date Posted: {{ comment.date }}</div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No comments yet.</p>
+    {% endif %}
+
+    <form action="{% url 'comment_create' lesson_id=lesson.id %}" method="POST">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <!-- <textarea name="content" rows="4" cols="50"></textarea><br> -->
+        <button type="submit" class="btn">Add Comment</button>
+      </form>
   </div>
-  
-  <form action="{% url 'comment_create' lesson.id %}" method="post">
-    {% csrf_token %}
-    <textarea name="content" rows="4" cols="50"></textarea><br>
-    <button type="submit">Add Comment</button>
-  </form>
 </div>
 
 {% endblock %}

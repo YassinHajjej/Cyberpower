@@ -10,7 +10,14 @@ class Topic(models.Model):
     def __str__(self):
         return self.name
     
+# class Comment(models.Model):
+#     date = models.DateField('Date Posted')
+#     content = models.CharField('Comment', max_length=255)
 
+#     def __str__(self):
+#         return self.name
+#     def get_absolute_url(self):
+#         return reverse('comments', kwargs=)
 
 class Lesson(models.Model):
     title = models.CharField(max_length=100)
@@ -30,7 +37,7 @@ class Lesson(models.Model):
     
 class Comments(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='comments')
-    date = models.DateField('Date Posted')
+    date = models.DateField('Date Posted', auto_now_add=True)
     content = models.CharField('Comment', max_length=255)
 
     def __str__(self):
