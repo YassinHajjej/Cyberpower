@@ -27,22 +27,25 @@ class Lesson(models.Model):
     difficulty_level = models.CharField(max_length=20)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     # topics = models.ManyToManyField(Topic)
 
     def __str__(self):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'lesson_id': self.id})
+        return reverse('lesson_detail', kwargs={'lesson_id': self.id})
     
-    
+# class Comment(models.Model):  
 class Comments(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='comments')
     date = models.DateField('Date Posted', auto_now_add=True)
     content = models.CharField('Comment', max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.content
     
     class Meta:
         ordering = ['-date']
+

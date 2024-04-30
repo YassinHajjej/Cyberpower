@@ -8,19 +8,19 @@ from .forms import CommentForm
 from datetime import date
 
 
-# Create your views here.
-def loginPage(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+# # Create your views here.
+# def loginPage(request):
+#     if request.method == 'POST':
+#         username = request.POST.get('username')
+#         password = request.POST.get('password')
 
-        try:
-            user = User.objects.get(username=username)
-        except: 
-            messages.error(request, ' User not Found')
+#         try:
+#             user = User.objects.get(username=username)
+#         except User.DoesNotExist: 
+#             messages.error(request, 'User not Found')
 
-    context = {}
-    return render(request, 'login_register.html', context)
+#     context = {}
+#     return render(request, 'login_register.html', context)
 
 
 

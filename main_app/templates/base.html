@@ -41,20 +41,11 @@
                     <input class="form-control me-sm-2" type="search" placeholder="Search">
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                 </form>
-                <div>
-                <a href="{% url 'login' %}">Login</a>
-                </div>
+                
             </div>
         </div>
     </nav>
     </header>
-    {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-      <li {% if message.tags %} class="{{ message.tags}}" {% endif %}> {{ message }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
     <main class="container">
       {% block content %}
       {% endblock %}
