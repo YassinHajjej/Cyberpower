@@ -1,29 +1,24 @@
+from django.forms import BaseModelForm
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
+from django.contrib.auth import login
+from django.contrib.auth import logout
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Lesson, Comments
 from .forms import CommentForm
 from datetime import date
 
-
-# # Create your views here.
-# def loginPage(request):
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-
-#         try:
-#             user = User.objects.get(username=username)
-#         except User.DoesNotExist: 
-#             messages.error(request, 'User not Found')
-
-#     context = {}
-#     return render(request, 'login_register.html', context)
-
-
+# Create your views here.
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('home')
 
 def home(request):
     return render(request, 'home.html')
@@ -53,6 +48,23 @@ class LessonCreate(CreateView):
     model = Lesson
     fields = '__all__'
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
+def add_photo(request, lesson_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f"{S3_BASE_URL}{key}"
+            Photo.objects.create(url=url, lesson_id=lesson_id)
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('lesson_detail', lesson_id=lesson_id)
+
 class LessonUpdate(UpdateView):
     model = Lesson 
     fields = '__all__'
@@ -77,3 +89,17 @@ def delete_comment(request, comment_id):
     if request.method == 'POST':
         comment.delete()
     return redirect('lesson_detail', lesson_id=comment.lesson.id)
+
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+        else:
+            error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html' , context)

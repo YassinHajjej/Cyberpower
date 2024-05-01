@@ -5,20 +5,7 @@ from datetime import date
 
 # Create your models here.
 
-class Topic(models.Model):
-    name = models.CharField(max_length=200)
 
-    def __str__(self):
-        return self.name
-    
-# class Comment(models.Model):
-#     date = models.DateField('Date Posted')
-#     content = models.CharField('Comment', max_length=255)
-
-#     def __str__(self):
-#         return self.name
-#     def get_absolute_url(self):
-#         return reverse('comments', kwargs=)
 
 class Lesson(models.Model):
     title = models.CharField(max_length=100)
@@ -48,4 +35,11 @@ class Comments(models.Model):
     
     class Meta:
         ordering = ['-date']
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for lesson_id: {self.lesson_id} @{self.url}"
 
