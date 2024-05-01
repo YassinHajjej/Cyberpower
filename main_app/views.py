@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.models import User
 from .models import Lesson, Comments
@@ -71,7 +72,8 @@ def add_comment(request, lesson_id):
     return redirect('lesson_detail', lesson_id=lesson_id)
    
 
-class DeleteComment(DeleteView):
-    model = Comments
-    success_url = '/lessons/'
-    
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comments, id=comment_id)
+    if request.method == 'POST':
+        comment.delete()
+    return redirect('lesson_detail', lesson_id=comment.lesson.id)
