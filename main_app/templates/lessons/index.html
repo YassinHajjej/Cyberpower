@@ -10,7 +10,7 @@
     <div class="lesson-item mb-4 p-4 border">
       <a href="{% url 'lesson_detail' lesson.id %}" class="text-decoration-none text-dark">
         <h2>{{ lesson.title }}</h2>
-        <h5>By: {{ lesson.user.username }}</h5>
+        <h5>{{ lesson.user.username }}</h5>
         <p>{{ lesson.description }}</p>
       </a>
     </div>

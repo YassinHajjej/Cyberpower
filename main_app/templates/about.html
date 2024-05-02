@@ -1,5 +1,35 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
-<h1>About FreeAdvance</h1>
-<hr>
+<div class="container">
+    <h1>About Us</h1>
+    <p>Welcome to our website! We are a team of developers passionate about creating educational resources for learners around the world.</p>
+    
+    <h2>Our Mission</h2>
+    <p>Our mission is to provide high-quality educational content that is accessible to everyone, regardless of their background or location.</p>
+    
+    <h2>Meet the One Man Team</h2>
+    <ul>
+        <li>Yassin Hajjej - Lead Developer</li>
+    </ul>
+    <h2>GitHub</h2>
+    <p>Check out our code on GitHub:</p>
+    <p>
+        <a href="https://github.com/YassinHajjej" target="_blank">
+            <img src="{% static 'css/github1.png' %}"  style="width: 50px; height: 50px;">
+        </a>
+        <a href="https://github.com/YassinHajjej" target="_blank">GitHub Profile</a>
+    </p>
+    
+    <h2>Features</h2>
+    <ul>
+        <li>Search for lessons on various topics</li>
+        <li>Create your own lessons and share them with the community</li>
+        <li>Engage with other users through comments and discussions</li>
+    </ul>
+    
+    <h2>Contact Us</h2>
+    <p>If you have any questions or feedback, feel free to reach out to us at ysnhajjej@gmail.com.</p>
+</div>
 {% endblock %}
