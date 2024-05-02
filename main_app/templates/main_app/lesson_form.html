@@ -2,6 +2,10 @@
 {% block content %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/cyborg/bootstrap.min.css">
 <style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+
   .form-label {
     font-weight: bold;
   }
@@ -13,22 +17,24 @@
   .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
+    border-radius: 0;
   }
 
   .btn-primary:hover {
     background-color: #0069d9;
     border-color: #0062cc;
   }
+
   .form-group {
-    display: flex;
-    align-items: center;
+    margin-bottom: 20px;
   }
-  .form-group .form-label {
-    flex: 0 0 150px;
-    margin-right: 10px;
-  }
-  .form-group .form-control {
-    flex: 1;
+
+  /* Custom styling for textareas */
+  .lesson-textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 150px; /* Set a minimum height */
+    border-radius: 0;
+    padding: 10px;
   }
 </style>
 
@@ -42,20 +48,20 @@
       {% endif %}
       <form action="" method="POST" autocomplete="off">
         {% csrf_token %}
-        <div class="mb-3">
+        <div class="form-group">
           <label for="title" class="form-label">Lesson Title:</label>
           {{ form.title }}
         </div>
-        <div class="mb-3">
+        <div class="form-group">
           <label for="description" class="form-label">Description:</label>
           {{ form.description }}
         </div>
-        <div class="mb-3">
+        <div class="form-group">
           <label for="content" class="form-label">Lesson Content:</label>
           {{ form.content }}
         </div>
-        <div class="mb-3">
-          <label for="content" class="form-label">Difficulty level:</label>
+        <div class="form-group">
+          <label for="difficulty_level" class="form-label">Difficulty level:</label>
           {{ form.difficulty_level }}
         </div>
         <div class="text-center">

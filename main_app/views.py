@@ -17,7 +17,7 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
-@login_required
+# @login_required
 def home(request):
     lessons = Lesson.objects.all().order_by('-created_at')  
     return render(request, 'home.html', {'lessons': lessons})

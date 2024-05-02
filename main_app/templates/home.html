@@ -13,6 +13,7 @@
             <h5 class="card-title font-weight-bold">{{ lesson.title }}</h5>
             <p class="card-text">Description: {{ lesson.description }}</p>
             <p class="card-text">Created at: {{ lesson.created_at }}</p>
+            <p class="card-text">Posted By: {{ lesson.user }}</p>
             <a href="{% url 'lesson_detail' lesson.id %}" class="btn btn-primary">View Lesson</a>
           </div>
         </div>
