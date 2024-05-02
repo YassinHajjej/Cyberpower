@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Search Results</h1>
+  {% for lesson in lessons %}
+    <div>
+      <h2><a href="{% url 'lesson_detail' lesson.id %}">{{ lesson.title }}</a></h2>
+      <p>{{ lesson.description }}</p>
+    </div>
+  {% empty %}
+    <p>No lessons found.</p>
+  {% endfor %}
+{% endblock %}

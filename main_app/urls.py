@@ -13,6 +13,7 @@ urlpatterns = [
     path('lessons/create/', views.LessonCreate.as_view(), name='lessons_create'),
     path('lessons/<int:pk>/update/', views.LessonUpdate.as_view(), name='lesson_update'),
     path('lessons/<int:pk>/delete/', views.LessonDelete.as_view(), name='lesson_delete'),
+    path('search/', views.search, name='search'), 
     path('lesson/<int:lesson_id>/comment/create/', views.add_comment, name='comment_create'),
     path('comment_delete/<int:comment_id>/', views.delete_comment, name='comment_delete'),
     path('lessons/<int:lesson_id>/add_photo/', views.add_photo, name='add_photo'),

@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/cyborg/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css">
 <h1>Are you sure you want to delete {{object.name}}? </h1>
 
 <form action="" method="POST">
     {% csrf_token %}
-    <input type="submit" value="Yes, I want to Delete {{object.name}}" class="btn red">
-    <a class="btn green" href="{% url 'lesson_detail' object.id %}">Cancel</a>
+    <input type="submit" value="Yes, I want to Delete {{object.name}}" class="btn btn-danger">
+    <a class="btn btn-success" href="{% url 'lesson_detail' object.id %}">Cancel</a>
 </form>
 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 {% endblock %}

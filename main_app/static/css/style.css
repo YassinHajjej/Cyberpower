@@ -1,62 +1,129 @@
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 main {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 footer.page-footer {
-    padding-top: 0;
+  padding-top: 0;
 }
 
 .lesson-detail {
-    margin-top: 20px;
-  }
-  
-  .lesson-detail header {
-    margin-bottom: 20px;
-  }
-  
-  .lesson-detail .card {
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .lesson-detail .card-content {
-    padding: 20px;
-  }
-  
-  .lesson-detail .card-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .lesson-detail .description {
-    margin-bottom: 10px;
-  }
-  
-  .lesson-detail .content {
-    margin-bottom: 10px;
-  }
-  
-  .lesson-detail .created-at {
-    font-style: italic;
-  }
-  
-  .lesson-detail .card-action {
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #e0e0e0;
-  }
-  
-  .lesson-detail .edit-btn {
-    background-color: #2196F3;
-  }
-  
-  .lesson-detail .delete-btn {
-    margin-left: 10px;
-  }
+  margin-top: 20px;
+}
+
+.lesson-detail header {
+  margin-bottom: 20px;
+}
+
+.lesson-detail .card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-detail .card-content {
+  padding: 20px;
+}
+
+.lesson-detail .card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.lesson-detail .description {
+  margin-bottom: 10px;
+}
+
+.lesson-detail .content {
+  margin-bottom: 10px;
+}
+
+.lesson-detail .created-at {
+  font-style: italic;
+}
+
+.lesson-detail .card-action {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+}
+
+.lesson-detail .edit-btn {
+  background-color: #2196f3;
+}
+
+.lesson-detail .delete-btn {
+  margin-left: 10px;
+}
+
+.lesson-details {
+  margin-top: 50px;
+}
+
+.lesson-details .card {
+  border: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-details .card-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.lesson-details .card-text {
+  margin-bottom: 10px;
+}
+
+.lesson-details .card-text:last-child {
+  margin-bottom: 20px;
+}
+
+.lesson-details .btn-primary {
+  margin-right: 10px;
+}
+
+.lesson-details .btn-danger {
+  margin-left: 10px;
+}
+
+.lesson-details .img-fluid {
+  margin-top: 20px;
+  max-width: 100%;
+  height: auto;
+}
+
+.lesson-details .container {
+  margin-top: 20px;
+}
+
+.lesson-details .list-group {
+  margin-top: 20px;
+}
+
+.lesson-details .list-group-item {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.lesson-details .list-group-item small {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.lesson-details .mt-3 {
+  margin-top: 20px;
+}
+
+.lesson-details .btn-success {
+  margin-top: 10px;
+}
