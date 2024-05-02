@@ -15,15 +15,23 @@
             <a href="{% url 'lesson_update' lesson.id %}" class="btn btn-primary me-2">Edit</a>
             <a href="{% url 'lesson_delete' lesson.id %}" class="btn btn-danger">Delete</a>
           </div>
+          {% for photo in lesson.photo_set.all %}
+            <img src="{{ photo.image.url }}" alt="photo" class="img-fluid mt-4">
+          {% empty %}
+            <div class="container mt-4">No Photos Uploaded</div>
+          {% endfor %}
+          <form action="{% url 'add_photo' lesson.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="photo-file">
+            <br>
+            <br>
+            <input type="submit" value="Upload Photo" class="btn green">
+          </form>
         </div>
       </div>
     </div>
   </div>
-</div>
-{% for photo in lesson.photo_set.all %}
-<img src="{{ photo.image.url }}" alt="photo" class="img-fluid mt-4">
-{% empty %}
-<div class="container mt-4">No Photos Uploaded</div>
+
   <div class="row justify-content-center mt-4">
     <div class="col-md-6">
       <div class="card">

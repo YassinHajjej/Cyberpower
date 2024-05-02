@@ -35,19 +35,21 @@
                         <a class="nav-link" href="{% url 'index' %}">View all Lessons</a>
                       </li>
                       <li class="nav-item">
-                      <a class="nav-link" href="{% url 'lessons_create' %}" method="POST">Create a Lessons</a>
-                      <form action="{% url 'logout' %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit">Logout</button>
-                    </form>
-                  {% else %}
-                        <li class="nav-item">
-                      <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                        <a class="nav-link" href="{% url 'lessons_create' %}" method="POST">Create a Lessons</a>
                       </li>
                       <li class="nav-item">
-                      <a class="nav-link" href="{% url 'login' %}" method="POST">Login</a>
+                        <form action="{% url 'logout' %}" method="POST">
+                          {% csrf_token %}
+                          <button type="submit" class="btn btn-link nav-link">Logout</button>
+                        </form>
                       </li>
-
+                  {% else %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}" method="POST">Login</a>
+                      </li>
                   {% endif %}
                 </ul>
                 <form class="d-flex">
