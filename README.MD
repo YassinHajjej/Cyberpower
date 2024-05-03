@@ -3,10 +3,10 @@ Our mission is to provide high-quality educational content that is accessible to
 
 # Screenshot
 
-<img src="/Users/yassinhajjej/code/learning_paltform/main_app/static/css/photo.png">
-<img src="/Users/yassinhajjej/code/learning_paltform/main_app/static/css/photo1.png">
-<img src="/Users/yassinhajjej/code/learning_paltform/main_app/static/css/photo2.png">
-<img src="/Users/yassinhajjej/code/learning_paltform/main_app/static/css/photo3.png">
+<img src="main_app/static/css/photo.png">
+<img src="main_app/static/css/photo1.png">
+<img src="main_app/static/css/photo2.png">
+<img src="main_app/static/css/photo3.png">
 
 
 # Technologies Used
