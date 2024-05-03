@@ -22,7 +22,7 @@ Our mission is to provide high-quality educational content that is accessible to
 
 [Project Planning](https://trello.com/b/YDGUXo9r/freeadvance)
 [GitHub](https://github.com/YassinHajjej/FreeAvdvance)
-[PurseIt](https://learningapp-6a1334bcd49b.herokuapp.com/)
+[FreeAdvance](https://learningapp-6a1334bcd49b.herokuapp.com/)
 
 # Next Steps
 
